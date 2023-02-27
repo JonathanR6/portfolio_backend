@@ -8,10 +8,20 @@ class Server {
     this.app = express();
     this.middlewares();
     this.routes();
+    this.errorHandler();
   }
 
   config(settings) {
     settings.map(({ setting, value }) => this.app.set(setting, value));
+  }
+
+  errorHandler() {
+    this.app.use((err, req, res, next) => {
+      console.log(`error: ${err.message}`);
+
+      res.status(err.status || 500).send('test');
+      next();
+    });
   }
 
   middlewares() {
