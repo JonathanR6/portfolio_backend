@@ -5,4 +5,5 @@ if (process.env.NODE_ENV !== 'production') config();
 module.exports = {
   PORT: process.env.PORT,
   HOST_DB: process.env.HOST_DB,
+  HOST_URL: process.env.HOST_URL,
 };
