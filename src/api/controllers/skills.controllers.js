@@ -19,7 +19,7 @@ module.exports = {
 
     const skill = await skillService.saveSkill({
       nameSkill,
-      iconUrl: `${HOST_URL}/api/storage/file?id=${id}`,
+      iconUrl: `${HOST_URL}/api/storage/file?item=${id}`,
     });
 
     res.status(201).json(skill);
