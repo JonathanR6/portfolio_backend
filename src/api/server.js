@@ -30,9 +30,6 @@ class Server {
 
   routes() {
     this.app.use('/api', router);
-    this.app.get('/', (req, res) => {
-      res.send('test desde server');
-    });
   }
 
   start() {

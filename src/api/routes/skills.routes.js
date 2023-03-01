@@ -5,6 +5,7 @@ const tryCatch = require('../middlewares/tryCatch');
 
 const skillsRoutes = Router();
 
-skillsRoutes.post('/skill', tryCatch(skillsControllers.addSkill));
+skillsRoutes
+  .post('/upload/skill', tryCatch(skillsControllers.addSkill));
 
 module.exports = skillsRoutes;
