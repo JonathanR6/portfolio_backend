@@ -19,7 +19,7 @@ class Server {
     this.app.use((err, req, res, next) => {
       console.log(`error: ${err.message}`);
 
-      res.status(err.status || 500).send('test');
+      res.status(err.status || 400).json({ error: err.message });
       next();
     });
   }
@@ -30,9 +30,6 @@ class Server {
 
   routes() {
     this.app.use('/api', router);
-    this.app.get('/', (req, res) => {
-      res.send('test desde server');
-    });
   }
 
   start() {
