@@ -1,9 +1,16 @@
 const ProjectModel = require('../database/models/project.model');
 
 module.exports = {
-  saveProject: ({ nameProject, iconUrl }) => ProjectModel.create({
+  saveProject: ({ nameProject, id }) => ProjectModel.create({
     name: nameProject,
-    iconUrl,
+    iconId: id,
+    iconUrl: id,
   }),
-  getProjects: () => ProjectModel.find({}),
+  getProjects: () => ProjectModel.find({}, { iconId: 0 }),
+  deleteProject: async (id) => {
+    const project = await ProjectModel.findById(id);
+    const removedProject = await project.remove();
+
+    return removedProject;
+  },
 };

@@ -1,25 +1,24 @@
 const projectService = require('../../services/projects.service');
 const fileService = require('../../services/files.service');
-const { HOST_URL } = require('../../config/environment');
 
 module.exports = {
   addProject: async (req, res) => {
     const { nameProject, nameFile } = req.body;
     const { file } = req.files;
 
-    const testFile = await fileService.saveFile({
+    const fileCreated = await fileService.saveFile({
       nameFile,
       mimetype: file.mimetype,
       fileBuffer: file.data,
     });
 
-    if (!testFile) throw Error('error file');
+    if (!fileCreated) throw Error('error file');
 
-    const { _id: id } = testFile;
+    const { _id: id } = fileCreated;
 
     const skill = await projectService.saveProject({
       nameProject,
-      iconUrl: `${HOST_URL}/api/storage/file?item=${id}`,
+      id,
     });
 
     res.status(201).json(skill);
@@ -28,5 +27,12 @@ module.exports = {
     const projects = await projectService.getProjects();
 
     res.status(200).json(projects);
+  },
+  removeProject: async (req, res) => {
+    const { item } = req.query;
+
+    const removedProject = await projectService.deleteProject(item);
+
+    res.status(200).json(removedProject);
   },
 };

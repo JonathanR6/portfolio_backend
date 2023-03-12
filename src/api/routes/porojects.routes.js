@@ -6,7 +6,8 @@ const tryCatch = require('../middlewares/tryCatch');
 const projectsRoutes = Router();
 
 projectsRoutes
+  .get('/projects', tryCatch(projectsControllers.getAllPorjects))
   .post('/upload/project', tryCatch(projectsControllers.addProject))
-  .get('/projects', tryCatch(projectsControllers.getAllPorjects));
+  .delete('/project', tryCatch(projectsControllers.removeProject));
 
 module.exports = projectsRoutes;
