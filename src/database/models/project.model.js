@@ -18,6 +18,14 @@ const projectSchema = Schema({
     require: [true, 'iconUrl property is required'],
     set: (v) => `${HOST_URL}/api/storage/file?item=${v}`,
   },
+  deployUrl: {
+    type: String,
+    require: [true, 'deployUrl property is required'],
+  },
+  repositoryUrl: {
+    type: String,
+    require: [true, 'repositoryUrl property is required'],
+  },
 });
 
 async function removeFile(next) {

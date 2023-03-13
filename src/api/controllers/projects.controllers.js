@@ -3,7 +3,10 @@ const fileService = require('../../services/files.service');
 
 module.exports = {
   addProject: async (req, res) => {
-    const { nameProject, nameFile } = req.body;
+    const {
+      nameProject, nameFile, deployUrl, repositoryUrl,
+    } = req.body;
+
     const { file } = req.files;
 
     const fileCreated = await fileService.saveFile({
@@ -19,6 +22,8 @@ module.exports = {
     const skill = await projectService.saveProject({
       nameProject,
       id,
+      deployUrl,
+      repositoryUrl,
     });
 
     res.status(201).json(skill);
