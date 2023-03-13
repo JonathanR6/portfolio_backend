@@ -33,6 +33,6 @@ module.exports = {
 
     const removedSkill = await skillService.deleteSkill(item);
 
-    res.status(201).json(removedSkill);
+    res.status(200).json(removedSkill);
   },
 };
