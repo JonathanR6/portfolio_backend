@@ -9,6 +9,7 @@ const curriculumsRoutes = Router();
 
 curriculumsRoutes
   .get('/storage/file/curriculum', checkQueryParams, tryCatch(curriculumsControllers.getCurriculums))
-  .post('/upload/curriculum', checkAccess, tryCatch(curriculumsControllers.addCurriculum));
+  .post('/upload/curriculum', checkAccess, tryCatch(curriculumsControllers.addCurriculum))
+  .delete('/storage/curriculum', checkAccess, tryCatch(curriculumsControllers.removeCurriculum));
 
 module.exports = curriculumsRoutes;

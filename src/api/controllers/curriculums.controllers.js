@@ -25,4 +25,10 @@ module.exports = {
 
     return res.status(201).json(curriculums);
   },
+  removeCurriculum: async (req, res) => {
+    const { item } = req.query;
+    const removedCurriculum = await curriculumService.deleteProject(item);
+
+    res.status(200).json(removedCurriculum);
+  },
 };

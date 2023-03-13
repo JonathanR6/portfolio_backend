@@ -7,4 +7,5 @@ module.exports = {
   }),
   getCurriculums: () => CurriculumModel.find({}),
   getCurriculumById: (id) => CurriculumModel.findById(id),
+  deleteProject: (id) => CurriculumModel.findByIdAndRemove(id),
 };
