@@ -10,3 +10,7 @@ node_modules/
 
 # vscode files
 .vscode
+
+# docker files
+fly.toml
+Dockerfile
